@@ -1,54 +1,42 @@
 body {
   margin: 0;
   padding: 0;
-  background: radial-gradient(circle at center, #0A0F2C 0%, #000000 100%);
   font-family: 'Noto Serif JP', serif;
-  color: #2e2e2e;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  background: radial-gradient(circle at center, #0a0f2c, #000);
+  color: #f5c542;
+  text-align: center;
 }
 
 .intro {
-  text-align: center;
-  color: #F5C542;
-  padding: 2rem;
+  padding: 2em;
 }
 
-.intro h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.2em;
 }
 
-.intro h2 {
+h2 {
+  font-size: 1.5em;
+  margin-top: 0;
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
 }
 
-.intro p {
-  margin: 0.5rem 0;
+p {
+  margin: 0.3em 0;
 }
 
-#openCard {
-  background-color: transparent;
-  color: #F5C542;
-  border: 1px solid #F5C542;
-  padding: 0.4rem 1.2rem;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: normal;
-  font-family: 'Noto Serif JP', serif;  /* ✅ 明朝体に変更 */
+.button {
+  margin-top: 1.5em;
+  padding: 0.8em 2em;
+  background-color: #f5c542;
+  color: #000;
+  font-size: 1em;
+  font-family: 'Noto Serif JP', serif;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 2rem;
-}
-
-
-#openCard:hover {
-  background-color: rgba(245, 197, 66, 0.1); /* うっすら浮かび上がる感じのホバー演出 */
 }
 
 .card-container {
@@ -56,85 +44,63 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  min-height: 100vh;
-  padding-bottom: 120px;  /* 💡「戻る」ボタンとカードがかぶらないように */
+  padding: 1em;
 }
 
 .card {
-  width: 300px;
-  height: 450px;
+  width: 90%;
+  max-width: 400px;
+  height: auto;
   perspective: 1000px;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5em;
 }
 
 .card-inner {
-  width: 100%;
-  height: 100%;
   position: relative;
-  transition: transform 1s;
+  width: 100%;
+  padding-top: 150%; /* 2:3 ratio */
   transform-style: preserve-3d;
+  transition: transform 0.8s ease;
 }
 
 .card.flip .card-inner {
   transform: rotateY(180deg);
 }
 
-.card-front, .card-back {
+.card-front,
+.card-back {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   border-radius: 12px;
-  backface-visibility: hidden;
   background-size: cover;
   background-position: center;
+  backface-visibility: hidden;
 }
 
 .card-front {
-  background-image: url('img/card-back.jpg');
+  background-image: url('img/card-front.jpg');
 }
 
 .card-back {
-  background-image: url('img/card-front.jpg');
+  background-image: url('img/card-back.jpg');
   transform: rotateY(180deg);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2.5rem 1.5rem;
-  text-align: center;
+  padding: 2em;
 }
 
 .question-text {
-  font-family: 'Noto Serif JP', serif;
-  font-size: 1.1rem;
-  color: #2e2e2e;
+  font-size: 1.2rem;
+  color: #222;
   line-height: 1.8;
   opacity: 0;
   transition: opacity 1s ease-in;
-  padding: 1.5rem 1rem;  /* 💫 絵柄から文字を離して読みやすく */
 }
 
 .card.flip .question-text {
   opacity: 1;
-}
-
-#backButton {
-  position: fixed; /* ✅ 固定表示（スクロールしても画面下に表示） */
-  bottom: 40px;    /* ✅ 下から40pxの位置に */
-  left: 50%;       /* ✅ 中央に配置 */
-  transform: translateX(-50%);
-  background-color: #F5C542;
-  color: #0A0F2C;
-  border: none;
-  padding: 0.6rem 1.4rem;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  z-index: 1000; /* ✅ 一番前面にする！ */
-  transition: background-color 0.3s ease;
-}
-
-#backButton:hover {
-  background-color: #eac021;
 }
