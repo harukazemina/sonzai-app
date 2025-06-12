@@ -119,14 +119,14 @@ button {
 
 /* スマホ対応 */
 @media (max-width: 600px) {
+  .question-text {
+    font-size: 1.3rem;  /* ← 小さすぎず大きすぎず */
+    padding: 1rem;
+  }
+
   .card {
     width: 70vw;
     height: 98vw;
-  }
-
-  .question-text {
-    font-size: 1rem;
-    padding: 1rem;
   }
 
   button {
