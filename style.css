@@ -65,7 +65,7 @@ button {
   transform: rotateY(180deg);
 }
 
-.card-back, .card-front {
+.card-front, .card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -75,18 +75,19 @@ button {
   background-position: center;
 }
 
-.card-back {
-  background-image: url('img/card-back.jpg'); /* タップ前（裏） */
+.card-front {
+  background-image: url('img/card-back.jpg'); /* カード裏（最初に見える面） */
 }
 
-.card-front {
-  background-image: url('img/card-front.jpg'); /* タップ後（表） */
+.card-back {
+  background-image: url('img/card-front.jpg'); /* カード表（問いが表示される） */
   transform: rotateY(180deg);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem 1.5rem;
   text-align: center;
+  position: relative;
 }
 
 .question-text {
@@ -97,6 +98,12 @@ button {
   opacity: 0;
   transition: opacity 1s ease-in;
   padding: 1.5rem 1rem;
+  max-width: 90%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 1px 1px 2px white;
 }
 
 .card.flip .question-text {
@@ -107,7 +114,7 @@ button {
   position: relative;
 }
 
-/* 🌼 スマホ用にサイズ調整 */
+/* スマホ対応 */
 @media (max-width: 600px) {
   .card {
     width: 90vw;
