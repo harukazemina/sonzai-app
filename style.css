@@ -3,7 +3,7 @@ body {
   padding: 0;
   font-family: 'Noto Serif JP', serif;
   background: radial-gradient(circle at center, #0A0F2C, #000);
-  color: #F5C542;
+  color: #2e2e2e;
   text-align: center;
 }
 
@@ -37,6 +37,7 @@ button {
   cursor: pointer;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 1rem;
 }
 
 .card-container {
@@ -44,14 +45,13 @@ button {
   flex-direction: column;
   align-items: center;
   padding: 2rem 1rem;
-  gap: 1.5rem;
 }
 
 .card {
-  width: 240px; /* 小さくしたカードサイズ */
-  height: 375px; /* 縦も4分の3に */
+  width: 300px;
+  height: 420px;
   perspective: 1000px;
-  margin: 0 auto;
+  margin-bottom: 1rem;
 }
 
 .card-inner {
@@ -78,28 +78,27 @@ button {
 
 .card-front {
   background-image: url('img/card-front.jpg');
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
 }
 
 .card-back {
   background-image: url('img/card-back.jpg');
   transform: rotateY(180deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 1.5rem;
-  text-align: center;
 }
 
 .question-text {
   font-family: 'Noto Serif JP', serif;
   font-size: 1.2rem;
-  color: #000000;         /* 黒文字に統一 */
+  color: #2e2e2e;
   line-height: 1.8;
-  opacity: 0;
-  transition: opacity 1s ease-in;
-  padding: 1.5rem 1rem;
+  text-shadow: none;
   text-align: center;
-  text-shadow: none;      /* 白ぼやけを消す */
+  padding: 1.2rem;
+  opacity: 0;
+  transition: opacity 0.8s ease-in;
 }
 
 .card.flip .question-text {
@@ -110,11 +109,10 @@ button {
   position: relative;
 }
 
-/* スマホ対応 */
 @media (max-width: 600px) {
   .card {
     width: 70vw;
-    height: 105vw;
+    height: 98vw;
   }
 
   .question-text {
