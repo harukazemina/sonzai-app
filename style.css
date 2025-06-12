@@ -65,7 +65,7 @@ button {
   transform: rotateY(180deg);
 }
 
-.card-front, .card-back {
+.card-back, .card-front {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -75,13 +75,13 @@ button {
   background-position: center;
 }
 
-/* ✅ 修正ポイント：画像の役割を反転 */
-.card-front {
-  background-image: url('img/card-back.jpg'); /* ← タップ前に見える「裏面」 */
+.card-back {
+  background-image: url('img/card-back.jpg'); /* タップ前（裏） */
 }
 
-.card-back {
-  background-image: url('img/card-front.jpg'); /* ← 質問が表示される「表面」 */
+.card-front {
+  background-image: url('img/card-front.jpg'); /* タップ後（表） */
+  transform: rotateY(180deg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,7 +107,7 @@ button {
   position: relative;
 }
 
-/* 📱 スマホ対応 */
+/* 🌼 スマホ用にサイズ調整 */
 @media (max-width: 600px) {
   .card {
     width: 90vw;
