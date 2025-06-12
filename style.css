@@ -2,105 +2,137 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Noto Serif JP', serif;
-  background: radial-gradient(circle at center, #0a0f2c, #000);
-  color: #f5c542;
+  background: radial-gradient(circle at center, #0A0F2C, #000);
+  color: #F5C542;
   text-align: center;
 }
 
 .intro {
-  padding: 2em;
+  padding: 3rem 1rem;
 }
 
 h1 {
-  font-size: 2.5em;
-  margin-bottom: 0.2em;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
 }
 
 h2 {
-  font-size: 1.5em;
-  margin-top: 0;
-  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
 }
 
 p {
-  margin: 0.3em 0;
+  font-size: 1rem;
+  margin-bottom: 2rem;
 }
 
-.button {
-  margin-top: 1.5em;
-  padding: 0.8em 2em;
-  background-color: #f5c542;
-  color: #000;
-  font-size: 1em;
+button {
   font-family: 'Noto Serif JP', serif;
+  background-color: #F5C542;
+  color: #000;
   border: none;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
   cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .card-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 1em;
+  padding: 2rem 1rem;
 }
 
 .card {
-  width: 90%;
-  max-width: 400px;
-  height: auto;
+  width: 320px;
+  height: 500px;
   perspective: 1000px;
-  margin-bottom: 1.5em;
+  margin-bottom: 1.5rem;
 }
 
 .card-inner {
-  position: relative;
   width: 100%;
-  padding-top: 150%; /* 2:3 ratio */
+  height: 100%;
+  transition: transform 0.8s;
   transform-style: preserve-3d;
-  transition: transform 0.8s ease;
+  position: relative;
 }
 
 .card.flip .card-inner {
   transform: rotateY(180deg);
 }
 
-.card-front,
-.card-back {
+.card-front, .card-back {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   border-radius: 12px;
+  backface-visibility: hidden;
   background-size: cover;
   background-position: center;
-  backface-visibility: hidden;
 }
 
+/* ✅ 修正ポイント：画像の役割を反転 */
 .card-front {
-  background-image: url('img/card-front.jpg');
+  background-image: url('img/card-back.jpg'); /* ← タップ前に見える「裏面」 */
 }
 
 .card-back {
-  background-image: url('img/card-back.jpg');
-  transform: rotateY(180deg);
+  background-image: url('img/card-front.jpg'); /* ← 質問が表示される「表面」 */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2em;
+  padding: 2rem 1.5rem;
+  text-align: center;
 }
 
 .question-text {
+  font-family: 'Noto Serif JP', serif;
   font-size: 1.2rem;
-  color: #222;
+  color: #2e2e2e;
   line-height: 1.8;
   opacity: 0;
   transition: opacity 1s ease-in;
+  padding: 1.5rem 1rem;
 }
 
 .card.flip .question-text {
   opacity: 1;
+}
+
+#backButton {
+  position: relative;
+}
+
+/* 📱 スマホ対応 */
+@media (max-width: 600px) {
+  .card {
+    width: 90vw;
+    height: 140vw;
+  }
+
+  .question-text {
+    font-size: 1rem;
+    padding: 1rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
 }
